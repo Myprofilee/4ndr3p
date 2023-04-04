@@ -14,12 +14,15 @@
         <!-- Ulang Tahun -->
         <div class="bg-white mb-5 px-4 py-3 rounded-md shadow">
             <h3 class="text-line-through font-semibold mb-1"> Birthdays </h3>
+            <a href="javascript:void(0)" id="linkBirthdays">
             <div class="-mx-2 duration-300 flex hover:bg-gray-50 px-2 py-2 rounded-md">
                 <img src="/assets/img/icons/birthdays/gift-icon.png" class="w-9 h-9 mr-3" alt="">
                 <p class="line-clamp-2 leading-6">
                     <strong> andrep </strong> Birthday on july 13th
+                <strong id="timeBirthdays"></strong>
                 </p>
             </div>
+            </a>
         </div>
         <!-- Ulang Tahun -->
 
@@ -96,6 +99,35 @@
     </div>
     <!-- Error Website 1 -->
 
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("july 13, 2023 00:00:00").getTime();
+
+        var x = setInterval(function () {
+
+            var now = new Date().getTime();
+
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timeBirthdays").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+                document.getElementById("timeBirthdays2").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timeBirthdays").innerHTML = "click now!";
+                document.getElementById("timeBirthdays2").innerHTML = "click now!";
+                document.getElementById("linkBirthdays").href = "/v/birthdays/";
+                document.getElementById("linkBirthdays2").href = "/v/birthdays/";
+            }
+        }, 1000);
+    </script>
 </body>
 
 </html>
