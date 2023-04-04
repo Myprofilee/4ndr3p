@@ -21,11 +21,16 @@
                         </svg>
                     </span>
 
+                    <span class="slide_menu slide_mobile_block" uk-toggle="target: #offcanvas-menu-mobile">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 4h18v2H3V4zm0 7h12v2H3v-2zm0 7h18v2H3v-2z" fill="currentColor"></path>
+                        </svg>
+                    </span>
+
                     <div id="logo">
                         <a href="/">
                             <img src="/assets/img/logo/logo.png" alt="andrep">
                             <img src="/assets/img/logo/logo-mobile.png" class="logo_mobile" alt="andrep">
-    
                         </a>
                     </div>
                 </div>
@@ -35,6 +40,7 @@
                     <div class="header_widgets">
 
                         <!-- Mobile Navbar -->
+                        
                         <a href="/" class="is_mobile" uk-tooltip="title: Home">
                             <i class="ri-home-3-line"></i>
                         </a>
@@ -54,7 +60,6 @@
                         <a href="/m/game" class="is_mobile" uk-tooltip="title: Game">
                             <i class="ri-gamepad-line"></i>
                         </a>
-
                         <!-- End Mobile Navbar -->
 
                         <a href="/m/plan" class="is_link"> Upgrade </a>
@@ -277,6 +282,55 @@
         <div class="side_overly" uk-toggle="target: #wrapper ; cls: is-collapse is-active"></div>
 
     </div>
+
+
+    <div id="offcanvas-menu-mobile" uk-offcanvas="flip: true; overlay: true">
+        <div class="uk-offcanvas-bar bg-white p-0 w-full lg:w-80 shadow-2xl">
+
+
+            <div class="relative pt-5 px-4">
+
+                <h3 class="text-2xl font-bold mb-2">Menu</h3>
+
+                <div class="absolute right-3 top-4 flex items-center space-x-2">
+                    <button class="uk-offcanvas-close"
+                        type="button" uk-close></button>
+
+                </div>
+
+
+            </div>
+
+            <nav class="responsive-nav border-b extanded mb-2 -mt-2">
+                <ul uk-switcher="connect: #chats-tab; animation: uk-animation-fade">
+                    <li class="uk-active">
+                        <a class="active" href="#0">andrep</a>
+                    </li>
+                    <li>
+                        <a href="#0">myzuu</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="contact-list px-2 uk-switcher" id="chats-tab">
+
+                <div class="p-1">
+                    <a href="/m/photo/">
+                        <div class="icon-menu-mobile">
+                            <i class="ri-image-line"></i>
+                        </div>
+                        <div class="contact-username">photo andrep</div>
+                    </a>
+                </div>
+
+                <div class="p-1">
+                    <span>Coming Soon</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.plyr.io/3.4.6/plyr.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="/assets/js/tippy.all.min.js"></script>
