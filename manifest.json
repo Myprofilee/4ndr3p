@@ -3,10 +3,10 @@
     "short_name":"andrep",
     "start_url":"index.html",
     "display":"standalone",
-    "background_color":"#5900b3",
+    "background_color":"#010f20",
     "theme_color":"black",
     "scope": ".",
-    "description":"This is a PWA tutorial.",
+    "description":"Portofolio andrep.",
     "icons":[
     {
     "src":"/assets/img/logo/andrep.png",                     
