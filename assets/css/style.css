@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 /* Loader */
-.loader{
+.loader {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,11 +16,12 @@
   z-index: 999;
 }
 
-.disppear{
+.disppear {
   animation: vanish 1s forwards;
 }
+
 @keyframes vanish {
-  100%{
+  100% {
     opacity: 0;
     visibility: hidden;
   }
@@ -33,6 +34,7 @@
   position: relative;
   animation: rotate 1s linear infinite
 }
+
 .loader-2::before {
   content: "";
   box-sizing: border-box;
@@ -40,20 +42,37 @@
   inset: 0px;
   border-radius: 50%;
   border: 5px solid #FFF;
-  animation: prixClipFix 2s linear infinite ;
+  animation: prixClipFix 2s linear infinite;
 }
 
 @keyframes rotate {
-  100%   {transform: rotate(360deg)}
+  100% {
+    transform: rotate(360deg)
+  }
 }
 
 @keyframes prixClipFix {
-    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
-    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+  }
 }
+
 /* Loader End */
 
 button {
@@ -871,6 +890,11 @@ body {
   line-height: 27px;
   font-family: Inter, sans-serif !important;
   text-transform: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body p {
@@ -7479,16 +7503,18 @@ header .header_inner .left_side .slide_menu svg {
 }
 
 @media screen and (min-width: 650px) {
-  header .header_inner .left_side .slide_mobile_block{
-      display:none;
+  header .header_inner .left_side .slide_mobile_block {
+    display: none;
   }
-}       
+}
 
 
-@media screen and (max-width:650px) {/*show mobile menu for mobile devices*/
-  header .header_inner .left_side .slide_mobile_block{
-      display:block;
-      margin-right: 10px;
+@media screen and (max-width:650px) {
+
+  /*show mobile menu for mobile devices*/
+  header .header_inner .left_side .slide_mobile_block {
+    display: block;
+    margin-right: 10px;
   }
 }
 

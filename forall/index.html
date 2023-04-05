@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="assets/images/favicon.png" rel="icon" type="image/png">
+    <title>For All | andrep</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/uikit.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body>
+    <div class="loader">
+        <div id="loader-animation"></div>
+    </div>
+
+    <div id="wrapper">
+
+        <div id="sidebar" style="z-index: 5;"></div>
+
+        <!-- Main Contents -->
+        <div class="main_content">
+
+            <div class="mcontainer">
+                <div class="lg:w-3/4 card">
+
+                    <div class="h-44 md:h-60 overflow-hidden relative rounded-t-lg w-full">
+                        <img src="assets/images/blog/img-5.jpg" alt=""
+                            class="w-full h-full absolute inset-0 object-cover">
+                    </div>
+
+                    <div class="bg-white max-w-4xl mx-auto md:p-10 p-6 relative rounded-md shadow">
+
+                        <div class="md:space-y-6 space-y-4 text-gray-400 md:text-lg">
+                            <p class="md:leading-8 leading-7">
+                                Bermimpilah sampai mimpimu terlihat mustahil bagi mereka yang terus melihatmu. Bangun
+                                dan bergeraklah karena mimpi itu tidak akan ada yang mustahil jika kau bergerak
+                                bersamanya.
+                            </p>
+
+                            <div class="font-semibold md:text-2xl text-xl text-gray-700">To : ***</div>
+                            <p class="md:leading-8 leading-7 blur" id="textBuAnjar"></p>
+
+                            <div class="font-semibold md:text-2xl text-xl text-gray-700">To : ***</div>
+                            <p class="md:leading-8 leading-7 blur" id="textTeman"></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Javascript -->
+        <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+        <script src="/assets/js/main.js"></script>
+
+        <script>
+            // Set the date we're counting down to
+            var countDownDate = new Date("july 13, 2023 00:00:00").getTime();
+
+            var x = setInterval(function () {
+
+                var now = new Date().getTime();
+
+                var distance = countDownDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("textBuAnjar").innerHTML = "comin soon " + days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+                document.getElementById("textTeman").innerHTML = "comin soon " + days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("textBuAnjar").innerHTML =
+                        `terima kasih karena selalu mendorong saya untuk menjadi yang terbaik. Semester ini telah
+                        menjadi favorit saya dalam waktu yang lama dan saya sangat beruntung memiliki guru yang
+                         baik hati.
+                         `;
+                    document.getElementById("textTeman").innerHTML =
+                        `terima kasih karena selalu mendorong saya untuk menjadi yang terbaik. Semester ini telah
+                        menjadi favorit saya dalam waktu yang lama dan saya sangat beruntung memiliki guru yang
+                         baik hati.
+                         `;
+                }
+            }, 1000);
+        </script>
+</body>
+
+</html>
