@@ -1,6 +1,6 @@
 {
     "name":"andrep",
-    "short_name":"PWA",
+    "short_name":"andrep",
     "start_url":"index.html",
     "display":"standalone",
     "background_color":"#5900b3",
