@@ -18,69 +18,11 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="manifest" href="manifest.json">
 
-    <style>
-        .block__install {
-    display: none;
-}
-
-// We want to display it only on mobile
-@media (max-width: 768px) {
-    .block__install {
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        z-index: 999999;
-        background: $white;
-        padding: 15px;
-        box-shadow: $box-shadow;
-        .inner {
-            display: flex;
-            align-items: center;
-            .close {
-                width: 32px;
-                height: 32px;
-                line-height: 32px;
-                img {
-                  width: 32px;
-                  height: 32px;
-                }              
-            }
-            .logo {
-                width: 48px;
-                img {
-                    width: 42px;
-                    border-radius: 2px;
-                }
-            }
-
-            .name {
-                padding-left: 10px;
-                span {
-                    display: block;
-                    &.title {
-                        font-size: 1.125rem;
-                        line-height: 1;
-                        font-weight: 600;
-                    }
-                }
-            }
-
-            .cta {
-                margin-left: auto;
-            }
-        }
-        &.is-active {
-            display: block;
-        }
-    }
-}
-    </style>
 </head>
 
 <body>
     <div class="loader">
-        <div id="loader-animation"></div>
+        <span class="loader-2"></span>
     </div>
 
     <div id="wrapper">
@@ -218,27 +160,10 @@
 
     </div>
 
-    <div class="block__install" id="BlockInstall">
-        <div class="inner">
-            <div class="close" id="BlockInstallClose">
-                <span>
-                  <img src="/img/icon-close.png' />
-                </span>
-            </div>
-            <div class="logo">
-                <img src="/img/logo-pwa.png' />
-            </div>
-            <div class="name">
-                <span class="title">Mountlift.com</span>
-                <span class="description">Ski & Snowboard</span>
-            </div>
-            <div class="cta">
-                <button id="BlockInstallButton" class="btn btn-outline">Install</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Javascript -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+    <script src="https://data13.andrep.my.id/firebase/andrep/home/andrep.js"></script>
+
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

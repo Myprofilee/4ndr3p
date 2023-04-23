@@ -21,12 +21,12 @@
   width: 1.4em;
   margin-right: -12px;
   float: right;
-  font-family: "Feather-Icons";
-  content: "\e92e";
+  font-family: "Remixicon";
+  content: "\ea4e";
   color: rgba(0, 0, 0, 0.54);
 }
 .uk-open > .uk-accordion-title::before {
-  content: "\e931";
+  content: "\ea78";
 }
 /* Hover + Focus */
 .uk-accordion-title:hover,
