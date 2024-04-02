@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="assets/images/favicon.png" rel="icon" type="image/png">
+    <title>game | andrep</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/uikit.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+
+</head> 
+<body>
+     
+    <div class="loader">
+        <span class="loader-2"></span>
+    </div>
+
+    <div id="wrapper">
+
+        <div id="sidebar" style="z-index: 5;"></div>
+
+        <!-- Main Contents -->
+        <div class="main_content">
+            <div class="mcontainer">
+
+                <div class="lg:flex lg:space-x-10">
+
+                    <div class="lg:w-2/3">
+                        <div class="md:mb-4 mb-3">
+                            <h2 class="text-2xl font-semibold"> Games </h2>
+                        </div>
+    
+                        <!-- Game slider -->
+                        <div class="relative" uk-slider="finite: true">
+                            <div class="uk-slider-container px-1 py-3">
+                                <ul class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid">
+                                
+                                    <li>
+                                        <div class="card">
+                                            <a href="/v/game/2023/balok-ninja/">
+                                                <img src="/assets/img/game/balok-ninja/andrep.png" class="h-44 object-cover rounded-t-md shadow-sm w-full">
+                                            </a>
+                                            <div class="p-3">
+                                                <h4 class="text-base font-semibold mb-0.5">Balok Ninja</h4>
+                                                <a href="/v/game/2023/balok-ninja/" class="block py-1.5 mt-2 text-sm font-semibold text-center bg-gray-200 rounded-md">Play  now</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="card">
+                                            <a href="/v/game/2023/2048/">
+                                                <img src="/assets/img/game/2048/andrep.png" class="h-44 object-cover rounded-t-md shadow-sm w-full">
+                                            </a>
+                                            <div class="p-3">
+                                                <h4 class="text-base font-semibold mb-0.5">Merge 2048</h4>
+                                                <a href="/v/game/2023/2048/" class="block py-1.5 mt-2 text-sm font-semibold text-center bg-gray-200 rounded-md">Play  now</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                                <a class="absolute bg-white bottom-1/2 flex items-center justify-center p-2 -left-4 rounded-full shadow-md text-xl w-9 z-10 dark:bg-gray-800 dark:text-white"
+                                    href="#" uk-slider-item="previous"><i class="ri-arrow-left-s-line"></i></a>
+                                <a class="absolute bg-white bottom-1/2 flex items-center justify-center p-2 -right-4 rounded-full shadow-md text-xl w-9 z-10 dark:bg-gray-800 dark:text-white"
+                                    href="#" uk-slider-item="next"><i class="ri-arrow-right-s-line"></i></a>
+
+                            </div>
+                        </div>
+    
+                        <br>
+                        
+                        <!-- Clips --
+                        <div class="my-5 flex justify-between pb-3">
+                            <h2 class="text-2xl font-semibold"> Top Clips </h2>
+                            <a href="#" class="text-blue-500"> See all </a>
+                        </div>
+    
+                        <div class="divide-y -mt-3 card px-5 py-2 ">
+    
+                            <!-- Video --
+                            <div class="flex sm:flex-row flex-col sm:space-x-4 py-4 relative w-full">
+                                <div class="sm:w-56 w-full h-32 overflow-hidden rounded-lg relative shadow-sm flex-shrink-0"> 
+                                    <img src="/assets/img/logo/andrep.png" alt="andrep" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="/assets/img/icons/icon-play.svg" class="w-12 h-12 uk-position-center" alt="andrep">
+                                </div>
+                                <div class="flex-1 relative md:mt-0 mt-4"> 
+                                    <a href="#" class="text-xl font-semibold leading-6">Coming Soon</a>
+                                    <p class="leading-6 line-clamp-2 mt-2">Coming Soon</p>
+                                    <div class="font-semibold mt-2">andrep</div>
+                                    <div class="flex space-x-2 items-center text-sm pt-1">
+                                        <div>Sen 3, Apr 2023</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Video --
+                            
+                        </div>
+                         <!-- Clips -->
+                    
+                    </div>
+
+                     <div id="sidebar-game"></div>
+
+ 
+                </div>
+
+        
+            </div>
+        </div>
+        
+    </div>
+  
+    <!-- Javascript -->
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+</body>
+</html>

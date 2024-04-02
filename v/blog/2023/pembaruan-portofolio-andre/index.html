@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link href="assets/images/favicon.png" rel="icon" type="image/png">
+
+    <!-- Basic Page Needs
+        ================================================== -->
+    <title>Pembaruan portofolio andrep</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Socialite is - Professional A unique and beautiful collection of UI elements">
+
+    <!-- icons
+    ================================================== -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- CSS 
+    ================================================== -->
+    <link rel="stylesheet" href="/assets/css/uikit.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="loader">
+        <span class="loader-2"></span>
+    </div>
+
+    <div id="wrapper">
+
+        <div id="sidebar" style="z-index: 5;"></div>
+
+        <!-- Main Contents -->
+        <div class="main_content">
+            <div class="mcontainer">
+
+                <div class="lg:flex lg:space-x-10">
+
+                    <div class="lg:w-3/4 space-y-5">
+
+                        <div class="card">
+
+                            <div class="h-44 mb-4 md:h-72 overflow-hidden relative rounded-t-lg w-full">
+                                <img src="/assets/img/blog/2023/pembauran-portofolio-andrep/andrep.png" alt="andrep"
+                                    class="w-full h-full absolute inset-0 object-cover">
+                            </div>
+                            <div class="p-7">
+
+                                <h1 class="lg:text-3xl text-2xl font-semibold mb-6">Pembaruan portofolio andrep</h1>
+
+                                <div class="flex items-center space-x-3 my-4 pb-4 border-b border-gray-100">
+                                    <img src="/assets/img/logo/andrep.png" alt="andrep" class="w-10 rounded-full">
+                                    <div>
+                                        <div class="text-base font-semibold">andrep</div>
+                                        <div class="text-xs">Published on Mar 31, 2023</div>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <p>
+                                        Melakukan pembaruan portofolio andrep dengan tampilan yang lebih keren, elegan
+                                        dan user friendly. Menjadikan website yang awalnya tepisah menjadi dalam 1
+                                        domain dengan memiliki halaman sebagai berikut: home, video, blog, course, game
+                                        dan photo.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div id="popular-articel"></div>
+
+                    </div>
+
+                    <div id="right-sidebar"></div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- For Night mode -->
+    <script>
+        (function (window, document, undefined) {
+            'use strict';
+            if (!('localStorage' in window)) return;
+            var nightMode = localStorage.getItem('gmtNightMode');
+            if (nightMode) {
+                document.documentElement.className += ' night-mode';
+            }
+        })(window, document);
+
+        (function (window, document, undefined) {
+
+            'use strict';
+
+            // Feature test
+            if (!('localStorage' in window)) return;
+
+            // Get our newly insert toggle
+            var nightMode = document.querySelector('#night-mode');
+            if (!nightMode) return;
+
+            // When clicked, toggle night mode on or off
+            nightMode.addEventListener('click', function (event) {
+                event.preventDefault();
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('gmtNightMode', true);
+                    return;
+                }
+                localStorage.removeItem('gmtNightMode');
+            }, false);
+
+        })(window, document);
+    </script>
+
+    <!-- Javascript
+    ================================================== -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/assets/js/tippy.all.min.js"></script>
+    <script src="/assets/js/uikit.js"></script>
+    <script src="/assets/js/simplebar.js"></script>
+    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/bootstrap-select.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>
