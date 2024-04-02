@@ -101,32 +101,50 @@
 
     <script>
         // Set the date we're counting down to
-        var countDownDate = new Date("july 13, 2023 00:00:00").getTime();
+        // Set the date we're counting down to
+var countDownDate = new Date("July 13, 2023 00:00:00").getTime();
 
-        var x = setInterval(function () {
+var x = setInterval(function () {
 
-            var now = new Date().getTime();
+    var now = new Date().getTime();
 
-            var distance = countDownDate - now;
+    var distance = countDownDate - now;
 
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Check if the current date has passed the birthday date
+    if (distance < 0) {
+        // Check if the current month is July
+        if (new Date().getMonth() == 7) { // Month is zero-based index (January is 0)
+            // Advance to the next year
+            countDownDate = new Date("Aplir 1, " + (new Date().getFullYear() + 1) + " 00:00:00").getTime();
+        } else {
+            // Advance to the next month in the same year
+            countDownDate = new Date("July 13, " + (new Date().getFullYear()) + " 00:00:00").getTime();
+        }
+        // Recalculate the distance
+        distance = countDownDate - now;
+    }
 
-            document.getElementById("timeBirthdays").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-                document.getElementById("timeBirthdays2").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
+    var months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30.4375)); // Approximate days in a month
 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("timeBirthdays").innerHTML = "click now!";
-                document.getElementById("timeBirthdays2").innerHTML = "click now!";
-                document.getElementById("linkBirthdays").href = "/v/birthdays/";
-                document.getElementById("linkBirthdays2").href = "/v/birthdays/";
-            }
-        }, 1000);
+    var days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30.4375)) / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("timeBirthdays").innerHTML = months + " Bulan " + days + " Hari " + hours + " Jam "
+        + minutes + " Menit " + seconds + " Detik ";
+    document.getElementById("timeBirthdays2").innerHTML = months + " Bulan " + days + " Hari " + hours + " Jam "
+        + minutes + " Menit " + seconds + " Detik ";
+
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timeBirthdays").innerHTML = "click now!";
+        document.getElementById("timeBirthdays2").innerHTML = "click now!";
+        document.getElementById("linkBirthdays").href = "/v/birthdays/";
+        document.getElementById("linkBirthdays2").href = "/v/birthdays/";
+    }
+}, 1000);
+
     </script>
 </body>
 

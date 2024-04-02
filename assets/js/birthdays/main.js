@@ -49,3 +49,14 @@ const saveMessages = (username, pesan) => {
 const getElementVal = (id) => {
     return document.getElementById(id).value;
 };
+
+window.onload = function() {
+    var currentDate = new Date();
+    var currentMonth = currentDate.getMonth() + 1; // Adding 1 because getMonth() returns zero-based month index
+    var currentDay = currentDate.getDate();
+
+    // Check if it's not July or it's not the 13th day of the month
+    if (currentMonth !== 7 || currentDay !== 13) {
+        window.location.href = "/akses di blokir"; // Redirect to index.html
+    }
+};
