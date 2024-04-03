@@ -60,17 +60,6 @@ function hideLoader() {
     loader.style.display = 'none';
 }
 
-// Fungsi untuk mereset nilai count ke 0 setiap hari pukul 9 malam
-function resetCountDaily() {
-    var now = new Date();
-    if (now.getHours() === 9 && now.getMinutes() === 0 && now.getSeconds() === 0) {
-        failedLoadCount = 0;
-        localStorage.setItem('failedLoadCount', failedLoadCount);
-    }
-}
-
-
-
 // Fungsi untuk memperbarui tabel dengan 10 data terakhir
 function updateCountTable() {
     var countTable = document.getElementById('countTable');
@@ -114,6 +103,7 @@ window.onload = function () {
     loadCronData(); // Memuat data cron saat halaman dimuat
     updateCountTable(); // Panggil fungsi untuk memperbarui tabel dengan data terakhir
     // Panggil fungsi resetCountDaily setiap detik untuk memeriksa apakah harus mereset nilai count
+    displayResetTime();
     setInterval(resetCountDaily, 1000);
 };
 
@@ -124,3 +114,48 @@ window.addEventListener('storage', function (e) {
         localStorage.setItem('failedLoadCount', failedLoadCount);
     }
 });
+
+// Inisialisasi resetTime di luar fungsi agar dapat diakses oleh fungsi lainnya
+var resetTime = new Date();
+resetTime.setHours(12);
+resetTime.setMinutes(0);
+resetTime.setSeconds(0);
+
+// Fungsi untuk menampilkan waktu reset local storage
+function displayResetTime() {
+    var now = new Date();
+
+    // Jika waktu reset sudah lewat, tambahkan 1 hari ke resetTime
+    if (now > resetTime) {
+        resetTime.setDate(resetTime.getDate() + 1);
+    }
+
+    var timeDiff = resetTime - now;
+    var secondsRemaining = Math.floor((timeDiff / 1000) % 60);
+    var minutesRemaining = Math.floor((timeDiff / 1000 / 60) % 60);
+    var hoursRemaining = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+
+    var timeString = hoursRemaining.toString().padStart(2, '0') + ":" +
+                     minutesRemaining.toString().padStart(2, '0') + ":" +
+                     secondsRemaining.toString().padStart(2, '0');
+
+    document.getElementById('resetTime').textContent = "Waktu reset data: " + timeString;
+}
+
+
+// Fungsi untuk mereset nilai count ke 0 setiap hari pukul 9 malam
+function resetCountDaily() {
+    var now = new Date();
+    var resetHour = resetTime.getHours();
+    var resetMinute = resetTime.getMinutes();
+    var resetSecond = resetTime.getSeconds();
+
+    if (now.getHours() === resetHour && now.getMinutes() === resetMinute && now.getSeconds() === resetSecond) {
+        failedLoadCount = 0;
+        localStorage.setItem('failedLoadCount', failedLoadCount);
+        autoRefreshCron(); // Panggil fungsi autoRefreshCron() ketika waktu reset sudah sesuai
+    }
+    displayResetTime(); // Panggil fungsi untuk menampilkan waktu reset
+}
+
+resetCountDaily(); // Memanggil fungsi resetCountDaily() agar dicek setiap saat
