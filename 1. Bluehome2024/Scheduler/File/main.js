@@ -63,7 +63,7 @@ function hideLoader() {
 // Fungsi untuk mereset nilai count ke 0 setiap hari pukul 9 malam
 function resetCountDaily() {
     var now = new Date();
-    if (now.getHours() === 21 && now.getMinutes() === 0 && now.getSeconds() === 0) {
+    if (now.getHours() === 9 && now.getMinutes() === 0 && now.getSeconds() === 0) {
         failedLoadCount = 0;
         localStorage.setItem('failedLoadCount', failedLoadCount);
     }
