@@ -30,7 +30,7 @@ function autoRefreshCron() {
 
 // Fungsi untuk memuat konten dari cron.php
 function loadCronData() {
-    fetch('https://bluehomeid.my.id/system/cron.php')
+    fetch('https://bluehomeid.my.id/system/andrep-cron.php')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
