@@ -1,3 +1,28 @@
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(function(registration) {
+        // Registrasi berhasil
+      })
+      .catch(function(error) {
+        // Registrasi gagal
+      });
+  }
+  
+  function scheduleCronSync() {
+    if ('serviceWorker' in navigator && 'SyncManager' in window) {
+      navigator.serviceWorker.ready
+        .then(function(registration) {
+          return registration.sync.register('cronSync');
+        })
+        .catch(function(err) {
+          console.error('Failed to register cron sync', err);
+        });
+    }
+  }
+  
+  // Panggil fungsi untuk menjadwalkan sinkronisasi
+  scheduleCronSync();
+
 // Mendapatkan nilai failedLoadCount dari localStorage saat halaman dimuat
 var failedLoadCount = localStorage.getItem('failedLoadCount') ? parseInt(localStorage.getItem('failedLoadCount')) : 0;
 
