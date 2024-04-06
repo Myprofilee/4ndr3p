@@ -261,17 +261,20 @@ window.addEventListener('storage', function (e) {
 
 // Inisialisasi resetTime di luar fungsi agar dapat diakses oleh fungsi lainnya
 var resetTime = new Date();
-resetTime.setHours(12); // Set waktu reset ke 9 malam
+resetTime.setHours(14); // Set waktu reset ke 9 malam
 resetTime.setMinutes(0);
 resetTime.setSeconds(0);
 
-// Fungsi untuk menampilkan waktu reset local storage
+// Fungsi untuk menampilkan waktu reset local storage dan reset local storage jika waktu sudah lewat
 function displayResetTime() {
     var now = new Date();
 
-    // Jika waktu reset sudah lewat, tambahkan 1 hari ke resetTime
+    // Jika waktu reset sudah lewat, reset local storage dan atur ulang waktu reset
     if (now > resetTime) {
-        resetTime.setDate(resetTime.getDate() + 1);
+        resetTime.setDate(resetTime.getDate() + 1); // Atur ulang waktu reset ke hari berikutnya
+        failedLoadCount = 0; // Reset failedLoadCount ke 0
+        localStorage.setItem('failedLoadCount', failedLoadCount); // Simpan perubahan ke local storage
+        localStorage.clear(); // Paksa reset local storage
     }
 
     var timeDiff = resetTime - now;
@@ -285,6 +288,7 @@ function displayResetTime() {
 
     document.getElementById('resetTime').textContent = "Waktu reset data: " + timeString;
 }
+
 
 // Fungsi untuk mereset nilai count ke 0 setiap hari pukul 9 malam
 function resetCountDaily() {
