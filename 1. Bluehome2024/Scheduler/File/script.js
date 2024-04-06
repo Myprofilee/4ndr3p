@@ -300,7 +300,7 @@ function resetCountDaily() {
     if (now.getHours() === resetHour && now.getMinutes() === resetMinute && now.getSeconds() === resetSecond) {
         failedLoadCount = 0;
         localStorage.setItem('failedLoadCount', failedLoadCount);
-        autoRefreshCron(); // Panggil fungsi autoRefreshCron() ketika waktu reset sudah sesuai
+        localStorage.clear(); // Panggil fungsi autoRefreshCron() ketika waktu reset sudah sesuai
     }
     displayResetTime(); // Panggil fungsi untuk menampilkan waktu reset
 }
