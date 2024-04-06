@@ -1,1 +1,161 @@
-function _0x3b5f(_0x1b89c1,_0x49b695){var _0x33a779=_0x33a7();return _0x3b5f=function(_0x3b5f9c,_0x439de0){_0x3b5f9c=_0x3b5f9c-0xd8;var _0x1d0b52=_0x33a779[_0x3b5f9c];return _0x1d0b52;},_0x3b5f(_0x1b89c1,_0x49b695);}var _0x473e88=_0x3b5f;(function(_0x426530,_0x4caecc){var _0x3d2504=_0x3b5f,_0x51300a=_0x426530();while(!![]){try{var _0x2a8e22=-parseInt(_0x3d2504(0xf6))/0x1*(parseInt(_0x3d2504(0xf8))/0x2)+parseInt(_0x3d2504(0xed))/0x3+parseInt(_0x3d2504(0x109))/0x4*(parseInt(_0x3d2504(0xf7))/0x5)+parseInt(_0x3d2504(0xf0))/0x6*(parseInt(_0x3d2504(0x101))/0x7)+parseInt(_0x3d2504(0xe2))/0x8+-parseInt(_0x3d2504(0xd9))/0x9+-parseInt(_0x3d2504(0x103))/0xa;if(_0x2a8e22===_0x4caecc)break;else _0x51300a['push'](_0x51300a['shift']());}catch(_0x1b3d0f){_0x51300a['push'](_0x51300a['shift']());}}}(_0x33a7,0x5baae));var failedLoadCount=localStorage[_0x473e88(0xf2)](_0x473e88(0xe7))?parseInt(localStorage[_0x473e88(0xf2)](_0x473e88(0xe7))):0x0;function showLoader(){var _0x1d720c=_0x473e88,_0x56aaf8=document[_0x1d720c(0x10a)](_0x1d720c(0xdd));_0x56aaf8[_0x1d720c(0xe8)][_0x1d720c(0xe1)]=_0x1d720c(0xdb);}function showNotification(_0x198aab){var _0x8606a2=_0x473e88,_0x29e24d=document['getElementById'](_0x8606a2(0xe3));_0x29e24d['textContent']=_0x198aab,_0x29e24d[_0x8606a2(0xe8)]['display']=_0x8606a2(0xdb),setTimeout(function(){var _0x42880d=_0x8606a2;_0x29e24d['style']['display']=_0x42880d(0x104);},0xbb8);}function autoRefreshCron(){showLoader(),setTimeout(function(){loadCronData(),updateCountTable(),autoRefreshCron();},0x1388);}function loadCronData(){var _0x21bab3=_0x473e88;fetch(_0x21bab3(0x106))[_0x21bab3(0xec)](_0x34d5c3=>{var _0xc59486=_0x21bab3;if(!_0x34d5c3['ok'])throw new Error(_0xc59486(0xe5));return _0x34d5c3['text']();})[_0x21bab3(0xec)](_0x45baa7=>{var _0x15b709=_0x21bab3;document[_0x15b709(0x107)](_0x15b709(0xde))[_0x15b709(0xfb)]=_0x45baa7,console['log'](_0x15b709(0xef)),showNotification(_0x15b709(0xe9)),hideLoader();})['catch'](_0x524d29=>{var _0x516c13=_0x21bab3;console[_0x516c13(0xf4)](_0x516c13(0xd8),_0x524d29);var _0x5bebda=new Date()[_0x516c13(0xfc)]();localStorage[_0x516c13(0xdf)](_0x516c13(0x105)+failedLoadCount,_0x5bebda),failedLoadCount++,localStorage[_0x516c13(0xdf)](_0x516c13(0xe7),failedLoadCount),showNotification('Gagal\x20memuat\x20konten:\x20'+_0x524d29[_0x516c13(0x102)]),hideLoader();});}function hideLoader(){var _0x206e05=_0x473e88,_0x3e4cae=document[_0x206e05(0x10a)](_0x206e05(0xdd));_0x3e4cae[_0x206e05(0xe8)][_0x206e05(0xe1)]=_0x206e05(0x104);}function _0x33a7(){var _0x24f480=['parentElement','error','setDate','191crVsbd','9595gdHuho','5324fnHpuF','getMinutes','300px','innerHTML','toLocaleString','countTable','addEventListener','onload','toString','63jzfWyT','message','3321590nRFlPZ','none','failureTime','https://bluehomeid.my.id/system/andrep-cron.php','getElementById','floor','116vosTTF','querySelector','setMinutes','Error\x20loading\x20cron.php:','1956546nTbpaT','push','block','forEach','.loader','cronData','setItem','auto','display','802560fExkhj','toast','maxHeight','Network\x20response\x20was\x20not\x20ok','storage','failedLoadCount','style','Konten\x20berhasil\x20dimuat!','padStart','overflowY','then','2178975LZEEfs','textContent','cron.php\x20loaded\x20successfully.','367446xZBZTh','getSeconds','getItem'];_0x33a7=function(){return _0x24f480;};return _0x33a7();}function updateCountTable(){var _0x4403cc=_0x473e88,_0x1ef3b6=document[_0x4403cc(0x107)](_0x4403cc(0xfd));_0x1ef3b6[_0x4403cc(0xfb)]='';var _0x51b42f=[];for(var _0xb8ce52=failedLoadCount;_0xb8ce52>=0x1;_0xb8ce52--){_0x51b42f[_0x4403cc(0xda)]({'count':_0xb8ce52,'time':localStorage[_0x4403cc(0xf2)](_0x4403cc(0x105)+_0xb8ce52)||'-'});}_0x51b42f[_0x4403cc(0xdc)](function(_0x3d5533){var _0x1bbaa8=_0x4403cc,_0x443861=_0x1ef3b6['insertRow'](),_0x509731=_0x443861['insertCell'](0x0),_0x9e84d=_0x443861['insertCell'](0x1);_0x509731['textContent']=_0x3d5533['count'],_0x9e84d[_0x1bbaa8(0xee)]=_0x3d5533['time'];}),failedLoadCount>0xa?(_0x1ef3b6[_0x4403cc(0xf3)][_0x4403cc(0xe8)][_0x4403cc(0xeb)]='scroll',_0x1ef3b6[_0x4403cc(0xf3)][_0x4403cc(0xe8)][_0x4403cc(0xe4)]=_0x4403cc(0xfa)):(_0x1ef3b6[_0x4403cc(0xf3)]['style'][_0x4403cc(0xeb)]=_0x4403cc(0xe0),_0x1ef3b6[_0x4403cc(0xf3)]['style'][_0x4403cc(0xe4)]='none');}function checkLocalStorage(){var _0x11ff17=_0x473e88;!localStorage[_0x11ff17(0xf2)]('failedLoadCount')&&(failedLoadCount=0x0,localStorage[_0x11ff17(0xdf)]('failedLoadCount',failedLoadCount));}window[_0x473e88(0xff)]=function(){checkLocalStorage(),autoRefreshCron(),loadCronData(),updateCountTable(),displayResetTime(),setInterval(resetCountDaily,0x3e8);},window[_0x473e88(0xfe)](_0x473e88(0xe6),function(_0x5c0047){var _0x15ecec=_0x473e88;!localStorage['getItem'](_0x15ecec(0xe7))&&(failedLoadCount=0x0,localStorage['setItem']('failedLoadCount',failedLoadCount));});var resetTime=new Date();resetTime['setHours'](0xc),resetTime[_0x473e88(0x10b)](0x0),resetTime['setSeconds'](0x0);function displayResetTime(){var _0x5d1ec6=_0x473e88,_0x51767e=new Date();_0x51767e>resetTime&&resetTime[_0x5d1ec6(0xf5)](resetTime['getDate']()+0x1);var _0xcafc5b=resetTime-_0x51767e,_0x37796e=Math['floor'](_0xcafc5b/0x3e8%0x3c),_0x336073=Math[_0x5d1ec6(0x108)](_0xcafc5b/0x3e8/0x3c%0x3c),_0x26aa6d=Math[_0x5d1ec6(0x108)](_0xcafc5b/(0x3e8*0x3c*0x3c)%0x18),_0x22cb21=_0x26aa6d[_0x5d1ec6(0x100)]()['padStart'](0x2,'0')+':'+_0x336073[_0x5d1ec6(0x100)]()[_0x5d1ec6(0xea)](0x2,'0')+':'+_0x37796e[_0x5d1ec6(0x100)]()[_0x5d1ec6(0xea)](0x2,'0');document[_0x5d1ec6(0x107)]('resetTime')[_0x5d1ec6(0xee)]='Waktu\x20reset\x20data:\x20'+_0x22cb21;}function resetCountDaily(){var _0xa9e574=_0x473e88,_0x467b11=new Date(),_0x23578b=resetTime['getHours'](),_0x16e453=resetTime['getMinutes'](),_0x498836=resetTime[_0xa9e574(0xf1)]();_0x467b11['getHours']()===_0x23578b&&_0x467b11[_0xa9e574(0xf9)]()===_0x16e453&&_0x467b11[_0xa9e574(0xf1)]()===_0x498836&&(failedLoadCount=0x0,localStorage[_0xa9e574(0xdf)](_0xa9e574(0xe7),failedLoadCount),autoRefreshCron()),displayResetTime();}resetCountDaily();
+// Mendapatkan nilai failedLoadCount dari localStorage saat halaman dimuat
+var failedLoadCount = localStorage.getItem('failedLoadCount') ? parseInt(localStorage.getItem('failedLoadCount')) : 0;
+
+// Fungsi untuk menampilkan loader
+function showLoader() {
+    var loader = document.querySelector('.loader');
+    loader.style.display = 'block';
+}
+
+// Fungsi untuk menampilkan notifikasi
+function showNotification(message) {
+    var toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.style.display = 'block';
+
+    setTimeout(function () {
+        toast.style.display = 'none';
+    }, 3000); // Hapus notifikasi setelah 3 detik
+}
+
+// Fungsi untuk memperbarui halaman cron setiap 5 detik
+function autoRefreshCron() {
+    showLoader(); // Menampilkan loader
+    setTimeout(function () {
+        loadCronData(); // Memuat ulang data cron
+        updateCountTable();
+        autoRefreshCron(); // Memanggil kembali fungsi ini untuk memperbarui secara terus-menerus
+    }, 5000);
+}
+
+// Fungsi untuk memuat konten dari cron.php
+function loadCronData() {
+    fetch('https://bluehomeid.my.id/system/andrep-cron.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('cronData').innerHTML = data;
+            console.log('cron.php loaded successfully.');
+            showNotification('Konten berhasil dimuat!');
+            hideLoader(); // Menyembunyikan loader setelah memuat berhasil
+        })
+        .catch(error => {
+            console.error('Error loading cron.php:', error);
+            var currentTime = new Date().toLocaleString();
+            localStorage.setItem('failureTime' + failedLoadCount, currentTime);
+            failedLoadCount++;
+            localStorage.setItem('failedLoadCount', failedLoadCount);
+            showNotification('Gagal memuat konten: ' + error.message);
+            hideLoader(); // Menyembunyikan loader setelah memuat gagal
+        });
+}
+
+// Fungsi untuk menyembunyikan loader
+function hideLoader() {
+    var loader = document.querySelector('.loader');
+    loader.style.display = 'none';
+}
+
+// Fungsi untuk memperbarui tabel dengan 10 data terakhir
+function updateCountTable() {
+    var countTable = document.getElementById('countTable');
+    countTable.innerHTML = ''; // Kosongkan tabel sebelum memasukkan data baru
+    var counts = [];
+    for (var i = failedLoadCount; i >= 1; i--) { // Iterasi dari nomor terbaru ke nomor 1
+        counts.push({
+            count: i,
+            time: localStorage.getItem('failureTime' + i) || '-'
+        });
+    }
+
+    counts.forEach(function (item) {
+        var row = countTable.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.textContent = item.count;
+        cell2.textContent = item.time;
+    });
+    if (failedLoadCount > 10) {
+        countTable.parentElement.style.overflowY = 'scroll';
+        countTable.parentElement.style.maxHeight = '300px';
+    } else {
+        countTable.parentElement.style.overflowY = 'auto';
+        countTable.parentElement.style.maxHeight = 'none';
+    }
+}
+
+// Fungsi untuk memeriksa apakah storage dihapus
+function checkLocalStorage() {
+    if (!localStorage.getItem('failedLoadCount')) {
+        failedLoadCount = 0;
+        localStorage.setItem('failedLoadCount', failedLoadCount);
+    }
+}
+
+// Panggil fungsi checkLocalStorage saat halaman dimuat
+window.onload = function () {
+    checkLocalStorage();
+    autoRefreshCron(); // Panggil fungsi untuk memulai pembaruan otomatis
+    loadCronData(); // Memuat data cron saat halaman dimuat
+    updateCountTable(); // Panggil fungsi untuk memperbarui tabel dengan data terakhir
+    // Panggil fungsi resetCountDaily setiap detik untuk memeriksa apakah harus mereset nilai count
+    displayResetTime();
+    setInterval(resetCountDaily, 1000);
+};
+
+// Event listener untuk memeriksa perubahan storage
+window.addEventListener('storage', function (e) {
+    if (!localStorage.getItem('failedLoadCount')) {
+        failedLoadCount = 0;
+        localStorage.setItem('failedLoadCount', failedLoadCount);
+    }
+});
+
+// Inisialisasi resetTime di luar fungsi agar dapat diakses oleh fungsi lainnya
+var resetTime = new Date();
+resetTime.setHours(13);
+resetTime.setMinutes(0);
+resetTime.setSeconds(0);
+
+// Fungsi untuk menampilkan waktu reset local storage
+function displayResetTime() {
+    var now = new Date();
+
+    // Jika waktu reset sudah lewat, tambahkan 1 hari ke resetTime
+    if (now > resetTime) {
+        resetTime.setDate(resetTime.getDate() + 1);
+    }
+
+    var timeDiff = resetTime - now;
+    var secondsRemaining = Math.floor((timeDiff / 1000) % 60);
+    var minutesRemaining = Math.floor((timeDiff / 1000 / 60) % 60);
+    var hoursRemaining = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+
+    var timeString = hoursRemaining.toString().padStart(2, '0') + ":" +
+                     minutesRemaining.toString().padStart(2, '0') + ":" +
+                     secondsRemaining.toString().padStart(2, '0');
+
+    document.getElementById('resetTime').textContent = "Waktu reset data: " + timeString;
+}
+
+
+// Fungsi untuk mereset nilai count ke 0 setiap hari pukul 9 malam
+function resetCountDaily() {
+    var now = new Date();
+    var resetHour = resetTime.getHours();
+    var resetMinute = resetTime.getMinutes();
+    var resetSecond = resetTime.getSeconds();
+
+    if (now.getHours() === resetHour && now.getMinutes() === resetMinute && now.getSeconds() === resetSecond) {
+        failedLoadCount = 0;
+        localStorage.setItem('failedLoadCount', failedLoadCount);
+        autoRefreshCron(); // Panggil fungsi autoRefreshCron() ketika waktu reset sudah sesuai
+    }
+    displayResetTime(); // Panggil fungsi untuk menampilkan waktu reset
+}
+
+resetCountDaily(); // Memanggil fungsi resetCountDaily() agar dicek setiap saat
