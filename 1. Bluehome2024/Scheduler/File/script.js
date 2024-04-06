@@ -261,8 +261,8 @@ window.addEventListener('storage', function (e) {
 
 // Inisialisasi resetTime di luar fungsi agar dapat diakses oleh fungsi lainnya
 var resetTime = new Date();
-resetTime.setHours(13); // Set waktu reset ke 9 malam
-resetTime.setMinutes(35);
+resetTime.setHours(12); // Set waktu reset ke 9 malam
+resetTime.setMinutes(0);
 resetTime.setSeconds(0);
 
 // Fungsi untuk menampilkan waktu reset local storage
