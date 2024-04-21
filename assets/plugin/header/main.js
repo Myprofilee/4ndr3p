@@ -44,12 +44,12 @@ function showgallery(curarra) {
                   <ul class="navbar-info mx-auto">
 
                     <li class="nav-item">
-                      <a class="nav-link ${currentPage === "" && i === 0 ? 'active' : ''}" aria-current="page" href="/">
-                        <i class="ri-home-3-line nav-icon"></i>
-                        <span>Home</span>
-                      </a>
+                        <a class="nav-link ${currentPage === "" && i === 0 ? 'active' : ''}" aria-current="page" href="/">
+                            <i class="ri-home-3-line nav-icon"></i>
+                            <span>Home</span>
+                        </a>
                     </li>
-
+              
                     <li class="nav-item">
                       <a class="nav-link ${currentPage === "/p/about-us" ? 'active' : ''}" href="/p/about-us">
                          <i class="ri-user-smile-fill nav-icon"></i>
