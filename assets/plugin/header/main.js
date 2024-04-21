@@ -80,6 +80,13 @@ function showgallery(curarra) {
 
                     <li class="nav-item">
                       <a class="nav-link ${currentPage === "/error" ? 'active' : ''}" href="/error">
+                        <i class="ri-movie-2-line nav-icon"></i>
+                        Video
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link ${currentPage === "/error" ? 'active' : ''}" href="/error">
                         <i class="ri-chat-smile-2-line nav-icon"></i>
                         Contact
                       </a>
