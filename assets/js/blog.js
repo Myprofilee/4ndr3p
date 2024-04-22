@@ -22,7 +22,6 @@ function encodeURL(url) {
     return btoa(url);
 }
 
-// Konversi waktu dari milidetik menjadi menit
 // Konversi waktu dari milidetik menjadi format detik, menit, atau jam
 function formatDuration(milliseconds) {
     let seconds = Math.floor(milliseconds / 1000);
@@ -32,31 +31,33 @@ function formatDuration(milliseconds) {
     } else if (seconds < 3600) {
         let minutes = Math.floor(seconds / 60);
         let remainingSeconds = seconds % 60;
-        return `${minutes} menit`;
+        return `${minutes} menit ${remainingSeconds} detik`;
     } else {
         let hours = Math.floor(seconds / 3600);
         let remainingMinutes = Math.floor((seconds % 3600) / 60);
         let remainingSeconds = seconds % 60;
-        return `${hours} jam ${remainingMinutes}`;
+        return `${hours} jam ${remainingMinutes} menit ${remainingSeconds} detik`;
     }
 }
-
 
 // Fungsi untuk melacak durasi penggunaan halaman
 function trackPageDuration(url) {
     let startTime = new Date().getTime();
     let encodedUrl = encodeURL(url); // Enkripsi URL
 
-    get(ref(database, 'Portofolio andrep/Blog/' + encodedUrl)).then((snapshot) => {
-        let duration = 0;
-        if (snapshot.exists()) {
-            duration = snapshot.val().duration || 0;
-        }
+    // Menghitung durasi pengguna membuka halaman
+    window.addEventListener('beforeunload', () => {
+        let endTime = new Date().getTime();
+        let duration = endTime - startTime;
 
-        // Menghitung durasi pengguna membuka halaman
-        window.addEventListener('beforeunload', () => {
-            let endTime = new Date().getTime();
-            duration += endTime - startTime;
+        // Mengambil durasi sebelumnya dari Firebase
+        get(ref(database, 'Portofolio andrep/Blog/' + encodedUrl)).then((snapshot) => {
+            let previousDuration = 0;
+            if (snapshot.exists()) {
+                previousDuration = snapshot.val().duration || 0;
+            }
+
+            duration += previousDuration;
 
             // Menyimpan data ke Realtime Database dengan ID yang telah dienkripsi
             set(ref(database, 'Portofolio andrep/Blog/' + encodedUrl), {
@@ -67,7 +68,17 @@ function trackPageDuration(url) {
             }).catch((error) => {
                 console.error("Gagal menyimpan durasi: ", error);
             });
+        }).catch((error) => {
+            console.error("Error saat mengambil data: ", error);
         });
+    });
+
+    // Tambahkan listener untuk mendapatkan data dari Firebase
+    get(ref(database, 'Portofolio andrep/Blog/' + encodedUrl)).then((snapshot) => {
+        let duration = 0;
+        if (snapshot.exists()) {
+            duration = snapshot.val().duration || 0;
+        }
 
         // Update tampilan di HTML
         document.getElementById('duration').textContent = formatDuration(duration);
