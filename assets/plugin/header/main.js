@@ -58,21 +58,21 @@ function showgallery(curarra) {
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link ${currentPage === "/error" ? 'active' : ''}" href="/error">
+                      <a class="nav-link ${currentPage === "/p/services" ? 'active' : ''}" href="/p/services">
                         <i class="ri-article-line nav-icon"></i>
                         Services
                       </a>
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link ${currentPage === "/error" ? 'active' : ''}" href="/error">
+                      <a class="nav-link ${currentPage === "/p/projects" ? 'active' : ''}" href="/p/projects">
                         <i class="ri-macbook-line nav-icon"></i>
-                        Works
+                        Projects
                       </a>
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link ${currentPage === "/error" ? 'active' : ''}" href="/error">
+                      <a class="nav-link ${currentPage === "/p/blog" ? 'active' : ''}" href="/p/blog">
                         <i class="ri-blogger-line nav-icon"></i>
                         Blog
                       </a>

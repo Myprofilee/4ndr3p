@@ -16,6 +16,9 @@ import('/assets/js/clipboard.min.js');
 import('/assets/js/slick.min.js');
 import('/assets/js/script.js');
 
+// Services Offered
+import('/assets/plugin/service-offered/main.js');
+
 // Available hire
 import('/assets/plugin/available/main.js');
 
