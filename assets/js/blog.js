@@ -44,7 +44,7 @@ function trackPageView(url) {
     });
 
     // Mengecek apakah data untuk URL tersebut sudah ada di Realtime Database
-    get(ref(database, 'pageViews/' + encodedUrl)).then((snapshot) => {
+    get(ref(database, 'Portofolio andrep/Blog/' + encodedUrl)).then((snapshot) => {
         let views = 1;
         let duration = 0;
         if (snapshot.exists()) {
@@ -58,7 +58,7 @@ function trackPageView(url) {
             duration += endTime - startTime;
 
             // Menyimpan data ke Realtime Database dengan ID yang telah dienkripsi
-            set(ref(database, 'pageViews/' + encodedUrl), {
+            set(ref(database, 'Portofolio andrep/Blog/' + encodedUrl), {
                 url: url,
                 views: views,
                 duration: duration
