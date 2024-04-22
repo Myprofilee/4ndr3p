@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Tracking with Firebase Realtime Database</title>
-    <!-- Tambahkan script Firebase -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
-        import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+    <title>Timer Page</title>
+</head>
+<body>
 
-        // Konfigurasi Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyBe7G6rFovAklTKNTmFb1TSogsiYDy_WO4",
+<h1>Timer:</h1>
+<p id="timer">00:00:00</p>
+
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+<script>
+    // Inisialisasi Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyBe7G6rFovAklTKNTmFb1TSogsiYDy_WO4",
   authDomain: "andrepid.firebaseapp.com",
   databaseURL: "https://andrepid-default-rtdb.firebaseio.com",
   projectId: "andrepid",
@@ -20,94 +23,52 @@
   messagingSenderId: "475106414273",
   appId: "1:475106414273:web:5921db06c2580738724e40",
   measurementId: "G-HTMHQWX8B6"
-        };
+};
 
-        // Inisialisasi Firebase
-        const firebaseApp = initializeApp(firebaseConfig);
-        const database = getDatabase(firebaseApp);
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
-        // Enkripsi URL menjadi base64
-        function encodeURL(url) {
-            return btoa(url);
-        }
+let startTime;
+let endTime;
 
-        // Konversi waktu dari milidetik menjadi jam, menit, dan detik
-        function formatDuration(milliseconds) {
-            let seconds = Math.floor(milliseconds / 1000);
-            let hours = Math.floor(seconds / 3600);
-            seconds %= 3600;
-            let minutes = Math.floor(seconds / 60);
-            seconds %= 60;
+// Fungsi untuk memulai timer
+function startTimer() {
+    startTime = new Date().getTime();
+    setInterval(updateTimer, 1000);
+}
 
-            return `${hours} jam ${minutes} menit ${seconds} detik`;
-        }
+// Fungsi untuk mengupdate timer setiap detik
+function updateTimer() {
+    let currentTime = new Date().getTime();
+    let elapsedTime = currentTime - startTime;
+    
+    let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+    let minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
 
-        // Fungsi untuk melacak waktu dan view halaman
-        function trackPageView(url) {
-            let startTime = new Date().getTime();
-            let encodedUrl = encodeURL(url); // Enkripsi URL
+    document.getElementById("timer").innerText = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
 
-            // Mendengarkan perubahan pada jumlah views
-            onValue(ref(database, 'pageViews/' + encodedUrl + '/views'), (snapshot) => {
-                let views = snapshot.val() || 0;
-                
-                // Update tampilan di HTML
-                document.getElementById('pageId').textContent = url;
-                document.getElementById('pageViews').textContent = views;
-            });
+// Fungsi untuk menyimpan waktu yang dihabiskan ke Firebase
+function saveTimeSpent(time) {
+    database.ref('timeSpent').push({
+        time: time
+    });
+}
 
-            // Mengecek apakah data untuk URL tersebut sudah ada di Realtime Database
-            get(ref(database, 'pageViews/' + encodedUrl)).then((snapshot) => {
-                let views = 1;
-                let duration = 0;
-                if (snapshot.exists()) {
-                    views = snapshot.val().views;
-                    duration = snapshot.val().duration || 0;
-                }
+// Mulai timer ketika halaman dimuat
+window.onload = function() {
+    startTimer();
 
-                // Menghitung durasi pengguna membuka halaman
-                window.addEventListener('beforeunload', () => {
-                    let endTime = new Date().getTime();
-                    duration += endTime - startTime;
+    // Simpan waktu yang dihabiskan saat pengguna meninggalkan halaman
+    window.onbeforeunload = function() {
+        endTime = new Date().getTime();
+        let timeSpent = (endTime - startTime) / 1000; // Konversi ke detik
+        saveTimeSpent(timeSpent);
+    }
+}
 
-                    // Menyimpan data ke Realtime Database dengan ID yang telah dienkripsi
-                    set(ref(database, 'pageViews/' + encodedUrl), {
-                        views: views + 1,
-                        duration: duration
-                    }).then(() => {
-                        console.log("Data berhasil disimpan!");
-                    }).catch((error) => {
-                        console.error("Gagal menyimpan data: ", error);
-                    });
-                });
-
-                // Update tampilan di HTML
-                document.getElementById('pageId').textContent = url;
-                document.getElementById('pageViews').textContent = views;
-                document.getElementById('duration').textContent = formatDuration(duration);
-            }).catch((error) => {
-                console.error("Error saat mengambil data: ", error);
-            });
-        }
-
-        // Memanggil fungsi trackPageView dengan URL halaman sebagai parameter
-        let currentUrl = window.location.href;
-        trackPageView(currentUrl);
-    </script>
-</head>
-
-<body>
-
-    <h1>Welcome to My Page</h1>
-    <p>This is a demo page for tracking page views and duration using Firebase Realtime Database.</p>
-
-    <!-- Menampilkan ID, lama waktu, dan jumlah view -->
-    <div>
-        <p><strong>Page ID:</strong> <span id="pageId"></span></p>
-        <p><strong>Duration:</strong> <span id="duration"></span></p>
-        <p><strong>Page Views:</strong> <span id="pageViews"></span></p>
-    </div>
+</script>
 
 </body>
-
 </html>
