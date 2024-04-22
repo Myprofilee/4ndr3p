@@ -7,6 +7,8 @@ import('/assets/plugin/profile-card/main.js');
 // Work Experiance ( My Project )
 import('/assets/plugin/work-experiance/main.js');
 
+// work-together-slider
+import('/assets/plugin/work-together-slider/main.js');
 
 // Services Offered
 import('/assets/plugin/services-offered/main.js');

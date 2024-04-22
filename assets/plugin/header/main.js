@@ -52,7 +52,7 @@ function showgallery(curarra) {
 
                     <li class="nav-item">
                       <a class="nav-link ${currentPage === "/p/about-us" ? 'active' : ''}" href="/p/about-us">
-                         <i class="ri-user-smile-fill nav-icon"></i>
+                         <i class="ri-user-smile-line nav-icon"></i>
                         About
                       </a>
                     </li>
@@ -86,9 +86,9 @@ function showgallery(curarra) {
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link ${currentPage === "/error" ? 'active' : ''}" href="/error">
-                        <i class="ri-chat-smile-2-line nav-icon"></i>
-                        Contact
+                      <a class="nav-link ${currentPage === "/p/games" ? 'active' : ''}" href="/p/games">
+                        <i class="ri-gamepad-line nav-icon"></i>
+                        Games
                       </a>
                     </li>
 
