@@ -20,11 +20,11 @@ showgallery(galleryarray);
 
 
 function showgallery(curarra) {
-  document.querySelector(".header").innerText = "";
+  document.getElementById("header").innerText = "";
   let currentPage = window.location.pathname.replace(/\/$/, ""); // Menghapus trailing slash
 
     for (var i = 0; i < curarra.length; i++) {
-        document.querySelector(".header").innerHTML += `
+        document.getElementById("header").innerHTML += `
         <nav class="navbar">
             <div class="container">
               <div class="menu-container">
