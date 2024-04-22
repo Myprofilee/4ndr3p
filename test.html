@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Tracking with Firebase Realtime Database</title>
+    <!-- Tambahkan script Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+        import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+
+        // Konfigurasi Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBe7G6rFovAklTKNTmFb1TSogsiYDy_WO4",
+  authDomain: "andrepid.firebaseapp.com",
+  databaseURL: "https://andrepid-default-rtdb.firebaseio.com",
+  projectId: "andrepid",
+  storageBucket: "andrepid.appspot.com",
+  messagingSenderId: "475106414273",
+  appId: "1:475106414273:web:5921db06c2580738724e40",
+  measurementId: "G-HTMHQWX8B6"
+        };
+
+        // Inisialisasi Firebase
+        const firebaseApp = initializeApp(firebaseConfig);
+        const database = getDatabase(firebaseApp);
+
+        // Enkripsi URL menjadi base64
+        function encodeURL(url) {
+            return btoa(url);
+        }
+
+        // Konversi waktu dari milidetik menjadi jam, menit, dan detik
+        function formatDuration(milliseconds) {
+            let seconds = Math.floor(milliseconds / 1000);
+            let hours = Math.floor(seconds / 3600);
+            seconds %= 3600;
+            let minutes = Math.floor(seconds / 60);
+            seconds %= 60;
+
+            return `${hours} jam ${minutes} menit ${seconds} detik`;
+        }
+
+        // Fungsi untuk melacak waktu dan view halaman
+        function trackPageView(url) {
+            let startTime = new Date().getTime();
+            let encodedUrl = encodeURL(url); // Enkripsi URL
+
+            // Mendengarkan perubahan pada jumlah views
+            onValue(ref(database, 'pageViews/' + encodedUrl + '/views'), (snapshot) => {
+                let views = snapshot.val() || 0;
+                
+                // Update tampilan di HTML
+                document.getElementById('pageId').textContent = url;
+                document.getElementById('pageViews').textContent = views;
+            });
+
+            // Mengecek apakah data untuk URL tersebut sudah ada di Realtime Database
+            get(ref(database, 'pageViews/' + encodedUrl)).then((snapshot) => {
+                let views = 1;
+                let duration = 0;
+                if (snapshot.exists()) {
+                    views = snapshot.val().views;
+                    duration = snapshot.val().duration || 0;
+                }
+
+                // Menghitung durasi pengguna membuka halaman
+                window.addEventListener('beforeunload', () => {
+                    let endTime = new Date().getTime();
+                    duration += endTime - startTime;
+
+                    // Menyimpan data ke Realtime Database dengan ID yang telah dienkripsi
+                    set(ref(database, 'pageViews/' + encodedUrl), {
+                        views: views + 1,
+                        duration: duration
+                    }).then(() => {
+                        console.log("Data berhasil disimpan!");
+                    }).catch((error) => {
+                        console.error("Gagal menyimpan data: ", error);
+                    });
+                });
+
+                // Update tampilan di HTML
+                document.getElementById('pageId').textContent = url;
+                document.getElementById('pageViews').textContent = views;
+                document.getElementById('duration').textContent = formatDuration(duration);
+            }).catch((error) => {
+                console.error("Error saat mengambil data: ", error);
+            });
+        }
+
+        // Memanggil fungsi trackPageView dengan URL halaman sebagai parameter
+        let currentUrl = window.location.href;
+        trackPageView(currentUrl);
+    </script>
+</head>
+
+<body>
+
+    <h1>Welcome to My Page</h1>
+    <p>This is a demo page for tracking page views and duration using Firebase Realtime Database.</p>
+
+    <!-- Menampilkan ID, lama waktu, dan jumlah view -->
+    <div>
+        <p><strong>Page ID:</strong> <span id="pageId"></span></p>
+        <p><strong>Duration:</strong> <span id="duration"></span></p>
+        <p><strong>Page Views:</strong> <span id="pageViews"></span></p>
+    </div>
+
+</body>
+
+</html>

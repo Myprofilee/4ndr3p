@@ -1,70 +1,82 @@
-function pageTimer() {
-    // Mendapatkan URL saat ini
-    let currentURL = window.location.href;
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
 
-    // Fetch data JSON dari server
-    fetch('/pageData.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-            return response.json();
-        })
-        .then(pageData => {
-            // Inisialisasi data untuk URL saat ini jika belum ada
-            if (!pageData[currentURL]) {
-                pageData[currentURL] = {
-                    timeSpent: 0,
-                    viewCount: 0
-                };
-            }
+// Konfigurasi Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyBe7G6rFovAklTKNTmFb1TSogsiYDy_WO4",
+    authDomain: "andrepid.firebaseapp.com",
+    databaseURL: "https://andrepid-default-rtdb.firebaseio.com",
+    projectId: "andrepid",
+    storageBucket: "andrepid.appspot.com",
+    messagingSenderId: "475106414273",
+    appId: "1:475106414273:web:5921db06c2580738724e40",
+    measurementId: "G-HTMHQWX8B6"
+};
 
-            // Mulai timer
-            let startTime = new Date().getTime();
+// Inisialisasi Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+const database = getDatabase(firebaseApp);
 
-            // Update waktu setiap detik
-            setInterval(function() {
-                let currentTime = new Date().getTime();
-                let elapsedTime = currentTime - startTime;
-                
-                // Update waktu total
-                pageData[currentURL].timeSpent += elapsedTime / 1000; // konversi ke detik
-
-                // Tambahkan view
-                pageData[currentURL].viewCount++;
-
-                // Mengkonversi waktu total menjadi format menit
-                let minutes = Math.floor(pageData[currentURL].timeSpent / 60);
-
-                // Tampilkan waktu total dan jumlah view di HTML
-                document.getElementById("totalTime").innerText = `${minutes} menit`;
-                document.getElementById("viewCount").innerText = pageData[currentURL].viewCount + " kali";
-
-                // Reset waktu awal
-                startTime = currentTime;
-
-                // Simpan data kembali ke file JSON
-                fetch('/pageData.json', {
-                    method: 'PUT', // atau 'POST' tergantung kebutuhan Anda
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(pageData)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to save data');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }, 1000);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+// Enkripsi URL menjadi base64
+function encodeURL(url) {
+    return btoa(url);
 }
 
-// Panggil fungsi pageTimer saat halaman dimuat
-pageTimer();
+// Konversi waktu dari milidetik menjadi menit
+function formatDuration(milliseconds) {
+    let seconds = Math.floor(milliseconds / 1000);
+    let minutes = Math.floor(seconds / 60);
+
+    return `${minutes} menit`;
+}
+
+// Fungsi untuk melacak waktu dan view halaman
+function trackPageView(url) {
+    let startTime = new Date().getTime();
+    let encodedUrl = encodeURL(url); // Enkripsi URL
+
+    // Mendengarkan perubahan pada jumlah views
+    onValue(ref(database, 'Portofolio andrep/Blog/' + encodedUrl + '/views'), (snapshot) => {
+        let views = snapshot.val() || 0;
+        
+        // Update tampilan di HTML
+        document.getElementById('pageViews').textContent = views + ' View';
+    });
+
+    // Mengecek apakah data untuk URL tersebut sudah ada di Realtime Database
+    get(ref(database, 'pageViews/' + encodedUrl)).then((snapshot) => {
+        let views = 1;
+        let duration = 0;
+        if (snapshot.exists()) {
+            views = snapshot.val().views + 1; // Menambah 1 ke views yang ada
+            duration = snapshot.val().duration || 0;
+        }
+
+        // Menghitung durasi pengguna membuka halaman
+        window.addEventListener('beforeunload', () => {
+            let endTime = new Date().getTime();
+            duration += endTime - startTime;
+
+            // Menyimpan data ke Realtime Database dengan ID yang telah dienkripsi
+            set(ref(database, 'pageViews/' + encodedUrl), {
+                url: url,
+                views: views,
+                duration: duration
+            }).then(() => {
+                console.log("Data berhasil disimpan!");
+            }).catch((error) => {
+                console.error("Gagal menyimpan data: ", error);
+            });
+        });
+
+        // Update tampilan di HTML
+        document.getElementById('pageViews').textContent = views + ' View';
+        document.getElementById('duration').textContent = formatDuration(duration);
+    }).catch((error) => {
+        console.error("Error saat mengambil data: ", error);
+    });
+}
+
+// Memanggil fungsi trackPageView dengan URL halaman sebagai parameter
+let currentUrl = window.location.href;
+trackPageView(currentUrl);
