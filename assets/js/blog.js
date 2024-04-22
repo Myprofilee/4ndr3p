@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
-import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
 
 // Konfigurasi Firebase
 const firebaseConfig = {
@@ -23,32 +23,33 @@ function encodeURL(url) {
 }
 
 // Konversi waktu dari milidetik menjadi menit
+// Konversi waktu dari milidetik menjadi format detik, menit, atau jam
 function formatDuration(milliseconds) {
     let seconds = Math.floor(milliseconds / 1000);
-    let minutes = Math.floor(seconds / 60);
-
-    return `${minutes} menit`;
+    
+    if (seconds < 60) {
+        return `${seconds} detik`;
+    } else if (seconds < 3600) {
+        let minutes = Math.floor(seconds / 60);
+        let remainingSeconds = seconds % 60;
+        return `${minutes} menit`;
+    } else {
+        let hours = Math.floor(seconds / 3600);
+        let remainingMinutes = Math.floor((seconds % 3600) / 60);
+        let remainingSeconds = seconds % 60;
+        return `${hours} jam ${remainingMinutes}`;
+    }
 }
 
-// Fungsi untuk melacak waktu dan view halaman
-function trackPageView(url) {
+
+// Fungsi untuk melacak durasi penggunaan halaman
+function trackPageDuration(url) {
     let startTime = new Date().getTime();
     let encodedUrl = encodeURL(url); // Enkripsi URL
 
-    // Mendengarkan perubahan pada jumlah views
-    onValue(ref(database, 'Portofolio andrep/Blog/' + encodedUrl + '/views'), (snapshot) => {
-        let views = snapshot.val() || 0;
-        
-        // Update tampilan di HTML
-        document.getElementById('pageViews').textContent = views + ' View';
-    });
-
-    // Mengecek apakah data untuk URL tersebut sudah ada di Realtime Database
     get(ref(database, 'Portofolio andrep/Blog/' + encodedUrl)).then((snapshot) => {
-        let views = 1;
         let duration = 0;
         if (snapshot.exists()) {
-            views = snapshot.val().views + 1; // Menambah 1 ke views yang ada
             duration = snapshot.val().duration || 0;
         }
 
@@ -60,23 +61,21 @@ function trackPageView(url) {
             // Menyimpan data ke Realtime Database dengan ID yang telah dienkripsi
             set(ref(database, 'Portofolio andrep/Blog/' + encodedUrl), {
                 url: url,
-                views: views,
                 duration: duration
             }).then(() => {
-                console.log("Data berhasil disimpan!");
+                console.log("Durasi berhasil disimpan!");
             }).catch((error) => {
-                console.error("Gagal menyimpan data: ", error);
+                console.error("Gagal menyimpan durasi: ", error);
             });
         });
 
         // Update tampilan di HTML
-        document.getElementById('pageViews').textContent = views + ' View';
         document.getElementById('duration').textContent = formatDuration(duration);
     }).catch((error) => {
         console.error("Error saat mengambil data: ", error);
     });
 }
 
-// Memanggil fungsi trackPageView dengan URL halaman sebagai parameter
+// Memanggil fungsi trackPageDuration dengan URL halaman sebagai parameter
 let currentUrl = window.location.href;
-trackPageView(currentUrl);
+trackPageDuration(currentUrl);
