@@ -845,18 +845,18 @@ p {
 }
 
 .content-box-card .available-btn span i {
-	font-size: 8px;
+	font-size: 10px;
 	margin-right: 12px;
 	position: relative;
 }
 
 .content-box-card .available-btn span i::after {
 	position: absolute;
-	top: 48.10%;
+	top: 48.3%;
 	left: 50%;
 	transform: translate(-50%, -50%) scale(0);
-	width: 70%;
-	height: 20%;
+	width: 60%;
+	height: 25%;
 	background-color: rgba(71, 112, 255, 0.3);
 	border-radius: 50%;
 	content: "";
