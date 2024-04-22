@@ -3,71 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timer Page</title>
+    <title>Form Kirim Email</title>
 </head>
 <body>
 
-<h1>Timer:</h1>
-<p id="timer">00:00:00</p>
+<h1>Form Kirim Email</h1>
 
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+<form id="emailForm">
+    <div>
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+        <label for="pesan">Pesan:</label>
+        <textarea id="pesan" name="pesan" rows="4" required></textarea>
+    </div>
+    <div>
+        <button type="submit">Kirim</button>
+    </div>
+</form>
+
 <script>
-    // Inisialisasi Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyBe7G6rFovAklTKNTmFb1TSogsiYDy_WO4",
-  authDomain: "andrepid.firebaseapp.com",
-  databaseURL: "https://andrepid-default-rtdb.firebaseio.com",
-  projectId: "andrepid",
-  storageBucket: "andrepid.appspot.com",
-  messagingSenderId: "475106414273",
-  appId: "1:475106414273:web:5921db06c2580738724e40",
-  measurementId: "G-HTMHQWX8B6"
-};
+document.getElementById('emailForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+    const nama = document.getElementById('nama').value;
+    const email = document.getElementById('email').value;
+    const pesan = document.getElementById('pesan').value;
 
-let startTime;
-let endTime;
+    const subject = `Pesan dari ${nama}`;
+    const body = `Nama: ${nama}%0AEmail: ${email}%0APesan: ${pesan}`;
 
-// Fungsi untuk memulai timer
-function startTimer() {
-    startTime = new Date().getTime();
-    setInterval(updateTimer, 1000);
-}
+    const emailLink = `mailto:emailAnda@gmail.com?subject=${subject}&body=${body}`;
 
-// Fungsi untuk mengupdate timer setiap detik
-function updateTimer() {
-    let currentTime = new Date().getTime();
-    let elapsedTime = currentTime - startTime;
-    
-    let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
-    let minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
-
-    document.getElementById("timer").innerText = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-}
-
-// Fungsi untuk menyimpan waktu yang dihabiskan ke Firebase
-function saveTimeSpent(time) {
-    database.ref('timeSpent').push({
-        time: time
-    });
-}
-
-// Mulai timer ketika halaman dimuat
-window.onload = function() {
-    startTimer();
-
-    // Simpan waktu yang dihabiskan saat pengguna meninggalkan halaman
-    window.onbeforeunload = function() {
-        endTime = new Date().getTime();
-        let timeSpent = (endTime - startTime) / 1000; // Konversi ke detik
-        saveTimeSpent(timeSpent);
-    }
-}
-
+    window.location.href = emailLink;
+});
 </script>
 
 </body>

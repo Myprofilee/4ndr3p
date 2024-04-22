@@ -105,7 +105,7 @@ function showgallery(curarra) {
                         <small class="theme-text d-block d-xl-none">Change appearance</small>
                       </span>
                     </button>
-                    <a href="contact.html" class="lets-talk-btn">
+                    <a href="/p/contact" class="lets-talk-btn">
                       Let's Talk
                       <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">

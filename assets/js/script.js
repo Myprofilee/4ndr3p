@@ -23,6 +23,9 @@ import('/assets/plugin/article-popular/main.js');
 // Background Shapes
 import('/assets/plugin/background-shapes/main.js');
 
+// Contact Form 
+import('/assets/js/contact.js');
+
 // Footer
 import('/assets/plugin/footer/main.js');
 
