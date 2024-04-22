@@ -20,9 +20,9 @@ showgallery(galleryarray);
 
 
 function showgallery(curarra) {
-    document.querySelector(".services-offered").innerText = "";
+    document.querySelector(".services-offered-2").innerText = "";
     for (var i = 0; i < curarra.length; i++) {
-        document.querySelector(".services-offered").innerHTML += `
+        document.querySelector(".services-offered-2").innerHTML += `
         <div class="col-md-3 col-sm-6 col-6">
           <div class="services-item text-center">
             <div class="image">

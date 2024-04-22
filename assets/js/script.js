@@ -12,6 +12,7 @@ import('/assets/plugin/work-together-slider/main.js');
 
 // Services Offered
 import('/assets/plugin/services-offered/main.js');
+import('/assets/plugin/services-offered/main-2.js');
 
 // Available hire
 import('/assets/plugin/available/main.js');
