@@ -1,3 +1,11 @@
+// Import All Javascript
+import('/assets/js/jquery-3.6.0.min.js');
+import('/assets/js/bootstrap.bundle.min.js');
+import('/assets/js/assets/js/jquery.magnific-popup.min.js');
+import('/assets/js/ajax-form.js');
+import('/assets/js/clipboard.min.js');
+import('/assets/js/slick.min.js');
+import('/assets/js/script.js');
 
 // filter array 
 let filterarray = [];
