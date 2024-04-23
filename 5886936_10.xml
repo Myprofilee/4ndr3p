@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://www.andrep.my.id/</loc>
+	<lastmod>2024-04-23T17:16:29+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.andrep.my.id/p/projects</loc>
+	<lastmod>2024-04-23T17:16:29+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://www.andrep.my.id/p/services</loc>
+	<lastmod>2024-04-23T17:16:29+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://www.andrep.my.id/p/contact</loc>
+	<lastmod>2024-04-23T17:16:29+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://www.andrep.my.id/v/projects/2024/koraa.my.id</loc>
+	<lastmod>2024-04-23T17:16:29+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+</urlset>

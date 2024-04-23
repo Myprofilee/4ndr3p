@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Refresh Example</title>
+    <link rel="stylesheet" href="/1. Bluehome2024/Scheduler/File/style.css">
+</head>
+
+<body>
+    <h1>Bluehome</h1>
+    <div class="loader"></div>
+    <p id="resetTime"></p>
+
+    <!-- Tambahkan elemen toast di sini -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Tambahkan elemen untuk menampilkan count sebagai tabel -->
+    <div class="scrollable-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Gagal memuat konten</th>
+                    <th>Terakhir gagal pada</th>
+                </tr>
+            </thead>
+            <tbody id="countTable">
+                <!-- Data count akan dimasukkan di sini -->
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="cronData"></div>
+
+    <script src="/1. Bluehome2024/Scheduler/File/script.js"></script>
+    <script src="/1. Bluehome2024/Scheduler/File/service-worker.js"></script>
+</body>
+
+</html>
