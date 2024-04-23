@@ -36,7 +36,7 @@ import('/assets/plugin/footer/main.js');
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
-	
+
 (function ($) {
 	"use strict";
 

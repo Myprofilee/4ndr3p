@@ -7,6 +7,7 @@ import('/assets/js/clipboard.min.js');
 import('/assets/js/slick.min.js');
 import('/assets/js/script.js');
 
+
 // filter array 
 let filterarray = [];
 
@@ -19,13 +20,7 @@ let galleryarray = [
 
 ];
 
-
-
 showgallery(galleryarray);
-
-
-// create function to show card
-
 
 function showgallery(curarra) {
     document.querySelector(".profile-card").innerText = "";
