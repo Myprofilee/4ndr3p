@@ -81,6 +81,21 @@ function showgallery(curarra, sliderElement) {
                 </div>
             </div>
         </li>
+
+        <li>
+            <div class="date">
+                <p>2024-2024</p>
+            </div>
+            <div class="info">
+                <div class="icon">
+                    <img src="/assets/img/card/andrep.png" alt="andrep13_">
+                </div>
+                <div class="text">
+                    <h4 class="title">Onofy</h4>
+                    <h6 class="subtitle">Onofy | onofy.andrep.my.id</h6>
+                </div>
+            </div>
+        </li>
         `;
     }
 }
